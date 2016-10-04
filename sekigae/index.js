@@ -42,6 +42,7 @@ $(function(){
         if($e.hasClass("removing")){
           return;
         }
+        member.splice($(".names").index($e), 1);
         $e.addClass("removed");
         setTimeout(function(){
           $e.css({height: "0px"});
@@ -79,6 +80,7 @@ $(function(){
   
   $btnNo.click(function(){
     toggleReset();
+    member = [];
     $(".names").addClass("removed");
     setTimeout(function(){
       $(".names").remove();
