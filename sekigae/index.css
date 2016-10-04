@@ -220,6 +220,7 @@ body.active{
 }
 
 .names{
+  position: relative;
   transition: 0.8s;
   text-align: center;
   opacity: 0.5;
@@ -231,6 +232,24 @@ body.active{
   background-color: rgb(211, 84, 0);
   margin: 0px;
   transform: translateX(100%);
+}
+.names>span.btn-delete{
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100%;
+  padding: 0px 10px;
+  transform: scaleX(0);
+  transform-origin: right;
+  background-color: #f44336;
+  transition: all 0.2s ease-out;
+}
+.names>span.btn-delete:hover{
+  background-color: #f00;
+}
+.names.menu>span.btn-delete{
+  transform: scaleX(1);
 }
 .names.entries{
   transition: 0.8s;

@@ -34,7 +34,22 @@ $(function(){
     if(isResetScene){
       toggleReset();
     }else{
-      var $e = $("<div>").text(entry).attr("id", count).addClass("names");
+      var $del = $("<span>").text("X").addClass("btn-delete");
+      var $e = $("<div>").text(entry).attr("id", count).addClass("names").append($del).click(function(){
+        $e.toggleClass("menu");
+      });
+      $del.click(function(){
+        if($e.hasClass("removing")){
+          return;
+        }
+        $e.addClass("removed");
+        setTimeout(function(){
+          $e.css({height: "0px"});
+        }, 800);
+        setTimeout(function(){
+          $e.remove;
+        }, 1600);
+      });
       $leaderboard.append($e);
       $e.innerHeight();
       $e.addClass("entries");
