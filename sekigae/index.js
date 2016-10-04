@@ -27,24 +27,23 @@ $(function(){
     member.push($nameList.val());
     if($nameList.val().trim()){
       addMembers($nameList.val());
-    };
+    }
   });
   
   function addMembers(entry){
-    if(isResetScene === false){
-        
-          $("<div id='VariableName' class='names'>Hello</div>").appendTo(document.getElementById("leaderboards"));
-          $("#VariableName").text(entry);
-          $("#VariableName").attr("id", count);
-          $(".names").innerHeight();
-          $(".names").addClass("entries");
-          $nameList.val("");
-          console.log(member);
-          count ++;
-      }else{
-        toggleReset();
-        };
-      };
+    if(isResetScene){
+      toggleReset();
+    }else{
+      $("<div id='VariableName' class='names'>Hello</div>").appendTo(document.getElementById("leaderboards"));
+      $("#VariableName").text(entry);
+      $("#VariableName").attr("id", count);
+      $(".names").innerHeight();
+      $(".names").addClass("entries");
+      $nameList.val("");
+      console.log(member);
+      count ++;
+    }
+  }
   
   function toggleReset(){
     $("#btn-accept").toggleClass("active");
@@ -53,25 +52,23 @@ $(function(){
     $("#btn-add").toggleClass("confirm");
     isResetScene = !isResetScene;
     console.log(isResetScene);
-    if(isResetScene === true){
+    if(isResetScene){
       $nameList.val("Are you sure?");
       $nameList.prop("disabled", "true");
       $addBtn.text("NO");
-  }else{
+    }else{
       $nameList.val("");
       $nameList.prop("disabled", null);
       $addBtn.text("ADD");
-    };
-  };
+    }
+  }
   
   $btnNo.click(function(){
-    
     toggleReset();
     $(".names").addClass("removed");
     setTimeout(function(){
       $(".names").remove();
     },800);
-    
   });
   
   $resetButton.click(function(){
@@ -89,25 +86,24 @@ $(function(){
   $btnImport.click(function(){
     $("#json-import").click();
   });
-  $('input[type=file]').on('change', function(e) {
-  var reader = new FileReader();
-  var file = e.target.files[0];
-  reader.onload = function() {
-    member = [];
-    member = JSON.parse(reader.result);
-    console.log(member);
-    $(".names").addClass("removed");
-    setTimeout(function(){
-      $(".names").remove();
-    },800);
-    
-    setTimeout(function(){
-      for(var i = 0; i < member.length; i++){
+  $('input[type=file]').on('change', function(e){
+    var reader = new FileReader();
+    var file = e.target.files[0];
+    reader.onload = function(){
+      member = [];
+      member = JSON.parse(reader.result);
+      console.log(member);
+      $(".names").addClass("removed");
+      setTimeout(function(){
+        $(".names").remove();
+      },800);
+      
+      setTimeout(function(){
+        for(var i = 0; i < member.length; i++){
           addMembers(member[i]);
-      }
-    },800);
-  };
-  reader.readAsText(file);
+        }
+      },800);
+    };
+    reader.readAsText(file);
+  });
 });
-});
-
