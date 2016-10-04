@@ -1,0 +1,201 @@
+body{
+  background-color: #ecf0f1;
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-drag:none;
+  -khtml-user-drag:none;
+  font-family: "moon", "iroha";
+  cursor: default;
+}
+
+#start{
+  position: absolute;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  border: solid 5px #34495e;
+  transition: 0.6s;
+  font-size: 3rem;
+  height: 100px;
+  width: 400px;
+  left: calc(50% - 400px /2);
+  top: calc(50% - 100px /2);
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  transform: rotateZ(0deg);
+}
+#start:hover{
+  transition: 0.6s;
+  color: #ecf0f1;
+  -moz-animation: vibration 0.8s linear;
+  -webkit-animation: vibration 0.8s linear;
+  -o-animation: vibration 0.8s linear;
+  -ms-animation: vibration 0.8s linear;
+}
+body.active{
+  transition: 1s;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0px 0px 5px white;
+  -webkit-filter: blur(30px);
+  
+}
+#start span{
+  position: relative;
+  height: 100px;
+  line-height: 50px;
+  z-index: 2;
+  top: 25%;
+}
+#start::before,#start::after{
+  z-index: 1;
+  content: "";
+  transition: 0.6s;
+  background-color: #34495e;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+#start:hover::before{
+  left: 50%;
+}
+#start:hover::after{
+  left: -50%;
+}
+#start::before{
+  left: 100%;
+}
+#start::after{
+  left:-100%;
+}
+#scene{
+  position: absolute;
+  left: -15px;
+}
+#navibar{
+  color: rgba(52, 73, 94,1.0);
+  transition: 0.4s;
+  left: 0px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-left: 0px;
+}
+#navibar li{
+  transition: 0.4s;
+  margin-left: 0px;
+  background-color: #bdc3c7;
+  height: 60px;
+  width: 300px;
+  padding-left: 30px;
+  line-height: -100px;
+  font-size: 150%;
+  cursor: pointer;
+}
+#navibar li:hover{
+  transition: 0.4s;
+  margin-left: 15px;
+}
+#option-btn{
+  border-right: solid 20px rgba(155, 89, 182,0.3);
+}
+#reset-btn{
+  border-right: solid 20px rgba(231, 76, 60,0.3);
+}
+#name-add{
+  position: relative;
+  overflow: hidden;
+  background-color: #bdc3c7;
+  font-family: "moon", "iroha";
+  height: 100px;
+  width: 300px;
+  
+}
+#input-box{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  left: calc(50% - 400px / 2);
+  top: calc(50% - 100px / 2);
+}
+#name-add{
+  background-color: transparent;
+  color: #34495e;
+  border: solid 3px #34495e;
+  text-align: center;
+  font-size: 300%;
+}
+#name-add:focus{
+  outline: none;
+}
+#btn-add{
+  transition: 0.3s;
+  color: #ecf0f1;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  line-height: 100px;
+  height: 100px;
+  width: 100px;
+  color: #34495e;
+  font-size: 200%;
+  border: solid 4px #34495e;
+  background-color: #ecf0f1;
+}
+#btn-add:hover{
+  transition: 0.3s;
+  color: #ecf0f1;
+  background-color: #34495e;
+}
+#btn-add:active{
+  background-color: #1abc9c;
+}
+#leaderboards{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  min-height: 50px;
+  max-height: 100%;
+  width: 400px;
+  height: auto;
+  overflow: scroll;
+}
+
+.names{
+  text-align: center;
+  opacity: 0.5;
+  color: #ecf0f1;
+  font-size: 200%;
+  line-height: 50px;
+  height: 50px;
+  width: 100%;
+  background-color: #34495e;
+  margin: 0px 0px 0px 0px;
+}
+.top{
+  transition: 0.8s;
+  opacity: 1;
+  pointer-events: all;
+}
+.after{
+  transition: 0.8s;
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes vibration{
+  10%, 30%, 50%, 70%, 90%{transform: rotateZ(3deg);}
+  20%, 40%, 60%, 80%{transform: rotateZ(-3deg);}
+  100%{transform:rotateZ(0deg);}
+}
+@font-face{
+  font-family: "moon";
+  src: url("./MoonLight.otf");
+}
+@font-face{
+  font-family: "iroha";
+  src: url("./irohamaru-Regular.ttf");
+}
