@@ -72,7 +72,7 @@ body.active{
 }
 #scene{
   position: absolute;
-  left: -15px;
+  left: -20px;
 }
 #navibar{
   color: rgba(52, 73, 94,1.0);
@@ -83,8 +83,9 @@ body.active{
   flex-direction: column;
   justify-content: space-around;
   padding-left: 0px;
+  line-height: 60px;
 }
-#navibar li{
+#navibar li, #navibar input{
   transition: 0.4s;
   margin-left: 0px;
   background-color: #bdc3c7;
@@ -97,7 +98,11 @@ body.active{
 }
 #navibar li:hover{
   transition: 0.4s;
-  margin-left: 15px;
+  margin-left: 20px;
+  color: rgba(127, 140, 141,1.0);
+}
+#shuffle-btn{
+  border-right: solid 20px rgba(52, 73, 94,0.3);
 }
 #option-btn{
   border-right: solid 20px rgba(155, 89, 182,0.3);
@@ -105,14 +110,32 @@ body.active{
 #reset-btn{
   border-right: solid 20px rgba(231, 76, 60,0.3);
 }
+#import-btn{
+  border-right: solid 20px rgba(26, 188, 156,0.3);
+}
+#export-btn{
+  border-right: solid 20px rgba(52, 152, 219,0.3);
+}
 #name-add{
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-drag:none;
+  -khtml-user-drag:none;
   position: relative;
   overflow: hidden;
   background-color: #bdc3c7;
   font-family: "moon", "iroha";
   height: 100px;
   width: 300px;
-  
+}
+#json-import{
+  position: absolute;
+  display: none;
+}
+#name-add.active{
+  font-size: 200%;
 }
 #input-box{
   position: absolute;
@@ -121,6 +144,13 @@ body.active{
   justify-content: center;
   left: calc(50% - 400px / 2);
   top: calc(50% - 100px / 2);
+  z-index: 2;
+}
+#input-box.active{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  left: calc(50% - 500px / 2);
 }
 #name-add{
   background-color: transparent;
@@ -132,7 +162,7 @@ body.active{
 #name-add:focus{
   outline: none;
 }
-#btn-add{
+.buttons{
   transition: 0.3s;
   color: #ecf0f1;
   position: relative;
@@ -146,12 +176,36 @@ body.active{
   border: solid 4px #34495e;
   background-color: #ecf0f1;
 }
-#btn-add:hover{
+#btn-add{
+  transition: 0.3s;
+}
+#btn-add.confirm{
+  background-color: rgba(46, 204, 113,1.0);
+}
+#btn-add.confirm:active{
+  background-color: rgba(39, 174, 96,1.0);
+}
+#btn-accept{
+  transition: 0.3s;
+  transform-origin: right center;
+  transform: rotateY(90deg);
+  width: 0px;
+  background-color: rgba(231, 76, 60,1.0);
+}
+#btn-accept.active{
+  transition: 0.3s;
+  transform: rotateY(0deg);
+  width: 100px;
+}
+#btn-accept.active:active{
+  background-color: rgba(192, 57, 43,1.0);
+}
+.buttons:hover{
   transition: 0.3s;
   color: #ecf0f1;
   background-color: #34495e;
 }
-#btn-add:active{
+.buttons:active{
   background-color: #1abc9c;
 }
 #leaderboards{
@@ -166,6 +220,7 @@ body.active{
 }
 
 .names{
+  transition: 0.8s;
   text-align: center;
   opacity: 0.5;
   color: #ecf0f1;
@@ -173,8 +228,14 @@ body.active{
   line-height: 50px;
   height: 50px;
   width: 100%;
-  background-color: #34495e;
-  margin: 0px 0px 0px 0px;
+  background-color: rgb(211, 84, 0);
+  margin: 0px;
+  transform: translateX(100%);
+}
+.names.entries{
+  transition: 0.8s;
+  opacity: 0.5;
+  transform: translateX(0%);
 }
 .top{
   transition: 0.8s;
@@ -183,6 +244,12 @@ body.active{
 }
 .after{
   transition: 0.8s;
+  opacity: 0;
+  pointer-events: none;
+}
+.removed{
+  transition: 0.8s;
+  margin-left: 100%;
   opacity: 0;
   pointer-events: none;
 }
