@@ -34,11 +34,10 @@ $(function(){
     if(isResetScene){
       toggleReset();
     }else{
-      $("<div id='VariableName' class='names'>Hello</div>").appendTo(document.getElementById("leaderboards"));
-      $("#VariableName").text(entry);
-      $("#VariableName").attr("id", count);
-      $(".names").innerHeight();
-      $(".names").addClass("entries");
+      var $e = $("<div>").text(entry).attr("id", count).addClass("names");
+      $leaderboard.append($e);
+      $e.innerHeight();
+      $e.addClass("entries");
       $nameList.val("");
       console.log(member);
       count ++;
