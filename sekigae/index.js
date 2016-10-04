@@ -47,7 +47,7 @@ $(function(){
           $e.css({height: "0px"});
         }, 800);
         setTimeout(function(){
-          $e.remove;
+          $e.remove();
         }, 1600);
       });
       $leaderboard.append($e);
