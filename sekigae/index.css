@@ -223,13 +223,12 @@ body.active{
   position: relative;
   transition: 0.8s;
   text-align: center;
-  opacity: 0.5;
   color: #ecf0f1;
   font-size: 200%;
   line-height: 50px;
   height: 50px;
   width: 100%;
-  background-color: rgb(211, 84, 0);
+  background-color: rgba(211, 84, 0, 0.5);
   margin: 0px;
   transform: translateX(100%);
 }
@@ -253,7 +252,6 @@ body.active{
 }
 .names.entries{
   transition: 0.8s;
-  opacity: 0.5;
   transform: translateX(0%);
 }
 .top{
