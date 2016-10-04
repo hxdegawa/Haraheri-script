@@ -24,7 +24,6 @@ $(function(){
   });
   
   $addBtn.click(function(){
-    member.push($nameList.val());
     if($nameList.val().trim()){
       addMembers($nameList.val());
     }
@@ -34,6 +33,7 @@ $(function(){
     if(isResetScene){
       toggleReset();
     }else{
+      member.push(entry);
       var $del = $("<span>").text("X").addClass("btn-delete");
       var $e = $("<div>").text(entry).attr("id", count).addClass("names").append($del).click(function(){
         $e.toggleClass("menu");
