@@ -117,6 +117,7 @@ body.active{
   border-right: solid 20px rgba(52, 152, 219,0.3);
 }
 #name-add{
+  transition: 0.3s;
   user-select:none;
   -webkit-user-select:none;
   -moz-user-select:none;
@@ -126,9 +127,16 @@ body.active{
   position: relative;
   overflow: hidden;
   background-color: #bdc3c7;
+  overflow: hidden;
   font-family: "moon", "iroha";
   height: 100px;
   width: 300px;
+}
+#name-add.optionalized{
+  transition: 0.3s;
+  margin-left: 50px;
+  height: 300px;
+  pointer-events: none;
 }
 #json-import{
   position: absolute;
@@ -145,6 +153,9 @@ body.active{
   left: calc(50% - 400px / 2);
   top: calc(50% - 100px / 2);
   z-index: 2;
+}
+#input-box.optionalized{
+  top: calc(35% - 100px / 2);
 }
 #input-box.active{
   display: flex;
@@ -178,6 +189,12 @@ body.active{
 }
 #btn-add{
   transition: 0.3s;
+}
+#btn-add.optionalized{
+  transition: 0.3s;
+  transform-origin: left center;
+  transform: rotateY(90deg);
+  width: 0px;
 }
 #btn-add.confirm{
   background-color: rgba(46, 204, 113,1.0);

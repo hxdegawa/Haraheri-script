@@ -1,8 +1,11 @@
 $(function(){
   var count = 0;
+  var currentMember = "";
   var isResetScene = false;
+  var isOptionScene = false;
   var $btnExport = $("#export-btn");
   var $btnImport = $("#import-btn");
+  var $btnOption = $("#shuffle-btn");
   var $btnNo = $("#btn-accept");
   var $resetButton = $("#reset-btn");
   var $btnStart = $("#start");
@@ -28,6 +31,15 @@ $(function(){
       addMembers($nameList.val());
     }
   });
+  
+  $btnOption.click(function(){
+    if(!isResetScene){
+      toggleOption();
+    }else{
+      toggleReset();
+      toggleOption();
+    }
+  })
   
   function addMembers(entry){
     if(isResetScene){
@@ -60,6 +72,37 @@ $(function(){
     }
   }
   
+  function toggleOption(){
+    $addBtn.toggleClass("optionalized");
+    $nameList.toggleClass("optionalized");
+    $("#input-box").toggleClass("optionalized");
+    $nameList.val("");
+    isOptionScene = !isOptionScene;
+    setTimeout(function(){
+      
+//      $nameList.val();
+      
+      
+      var w = 10;
+      function a(){
+        member.splice()
+        if(w < 1000){
+          setTimeout(function(){
+            a();
+          }, w | 0);
+          w *= 1.2;
+        }
+      }
+a();
+      
+      
+      
+      
+      
+      
+    }, 800);
+  }
+  
   function toggleReset(){
     $("#btn-accept").toggleClass("active");
     $("#input-box").toggleClass("active");
@@ -88,7 +131,13 @@ $(function(){
   });
   
   $resetButton.click(function(){
-    toggleReset();
+    if(isOptionScene){
+      toggleOption();
+      toggleReset();
+    }else{
+      toggleReset();
+    }
+    
   });
   
   $btnExport.click(function(){
