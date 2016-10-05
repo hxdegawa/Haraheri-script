@@ -106,16 +106,17 @@ $(function(){
     var reader = new FileReader();
     var file = e.target.files[0];
     reader.onload = function(){
-      var member = JSON.parse(reader.result);
-      console.log(member);
+      member = [];
+      var memberRead = JSON.parse(reader.result);
+      console.log(memberRead);
       $(".names").addClass("removed");
       setTimeout(function(){
         $(".names").remove();
       },800);
       
       setTimeout(function(){
-        for(var i = 0; i < member.length; i++){
-          addMembers(member[i]);
+        for(var i = 0; i < memberRead.length; i++){
+          addMembers(memberRead[i]);
         }
       },800);
     };
