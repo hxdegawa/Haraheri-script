@@ -106,8 +106,7 @@ $(function(){
     var reader = new FileReader();
     var file = e.target.files[0];
     reader.onload = function(){
-      member = [];
-      member = JSON.parse(reader.result);
+      var member = JSON.parse(reader.result);
       console.log(member);
       $(".names").addClass("removed");
       setTimeout(function(){
