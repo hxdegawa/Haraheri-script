@@ -112,9 +112,6 @@ $(function(){
       $(".names").addClass("removed");
       setTimeout(function(){
         $(".names").remove();
-      },800);
-      
-      setTimeout(function(){
         for(var i = 0; i < memberRead.length; i++){
           addMembers(memberRead[i]);
         }
