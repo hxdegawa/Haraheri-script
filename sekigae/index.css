@@ -102,7 +102,7 @@ body.active{
   color: rgba(127, 140, 141,1.0);
 }
 #shuffle-btn{
-  border-right: solid 20px rgba(52, 73, 94,0.3);
+  border-right: solid 20px rgba(241, 196, 15,0.3);
 }
 #option-btn{
   border-right: solid 20px rgba(155, 89, 182,0.3);
@@ -131,6 +131,10 @@ body.active{
   font-family: "moon", "iroha";
   height: 100px;
   width: 300px;
+}
+#name-add.completed{
+  transition: 0.3s;
+  color: red;
 }
 #name-add.optionalized{
   transition: 0.3s;
@@ -204,12 +208,13 @@ body.active{
 }
 #btn-accept{
   transition: 0.3s;
-  transform-origin: right center;
+  transform-origin: right;
   transform: rotateY(90deg);
   width: 0px;
   background-color: rgba(231, 76, 60,1.0);
 }
 #btn-accept.active{
+  transform-origin: right;
   transition: 0.3s;
   transform: rotateY(0deg);
   width: 100px;
@@ -298,5 +303,5 @@ body.active{
 }
 @font-face{
   font-family: "iroha";
-  src: url("./irohamaru-Regular.ttf");
+  src: url("./FlopDesignFONT.otf");
 }

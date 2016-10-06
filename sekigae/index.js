@@ -13,8 +13,9 @@ $(function(){
   var $changeName = $("#VariableName");
   var $addBtn = $("#btn-add");
   var $leaderboard = $("#leaderboards");
-  var preLeaderboard = "<p class='names'></p>"
-  var member = []
+  var preLeaderboard = "<p class='names'></p>";
+  var member = [];
+  var random = member[Math.floor(Math.random() * member.length)];
   var memberClose = [];
   
   $btnStart.click(function(){
@@ -73,27 +74,33 @@ $(function(){
   }
   
   function toggleOption(){
+    $nameList.removeClass("completed");
     $addBtn.toggleClass("optionalized");
     $nameList.toggleClass("optionalized");
     $("#input-box").toggleClass("optionalized");
     $nameList.val("");
     isOptionScene = !isOptionScene;
     setTimeout(function(){
-      
-//      $nameList.val();
-      
-      
-      var w = 10;
+      if(isOptionScene){
+        var w = 10;
       function a(){
-        member.splice()
+        random = member[Math.floor(Math.random() * member.length)];
+        console.log(random);
+        $nameList.val(random);
         if(w < 1000){
           setTimeout(function(){
             a();
           }, w | 0);
           w *= 1.2;
+        }else{
+          $nameList.val(random);
+          member.splice(member.indexOf(random), 1);
+          $nameList.addClass("completed");
         }
       }
 a();
+      }
+      
       
       
       
