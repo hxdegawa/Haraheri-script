@@ -116,6 +116,10 @@ body.active{
 #export-btn{
   border-right: solid 20px rgba(52, 152, 219,0.3);
 }
+#shuffle-btn.disabled{
+  background-color: rgba(52, 73, 94,0.6);
+  pointer-events: none;
+}
 #name-add{
   transition: 0.3s;
   user-select:none;

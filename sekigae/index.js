@@ -3,6 +3,7 @@ $(function(){
   var currentMember = "";
   var isResetScene = false;
   var isOptionScene = false;
+  var $leaderboards = $("#leaderboards");
   var $btnExport = $("#export-btn");
   var $btnImport = $("#import-btn");
   var $btnOption = $("#shuffle-btn");
@@ -40,7 +41,21 @@ $(function(){
       toggleReset();
       toggleOption();
     }
-  })
+  });
+  
+  function removeSpan($e){
+    if($e.hasClass("removing")){
+      return;
+    }
+    member.splice($(".names:not(.removed)").index($e), 1);
+    $e.addClass("removed");
+    setTimeout(function(){
+      $e.css({height: "0px"});
+    }, 800);
+    setTimeout(function(){
+      $e.remove();
+    }, 1600);
+  }
   
   function addMembers(entry){
     if(isResetScene){
@@ -52,17 +67,7 @@ $(function(){
         $e.toggleClass("menu");
       });
       $del.click(function(){
-        if($e.hasClass("removing")){
-          return;
-        }
-        member.splice($(".names:not(.removed)").index($e), 1);
-        $e.addClass("removed");
-        setTimeout(function(){
-          $e.css({height: "0px"});
-        }, 800);
-        setTimeout(function(){
-          $e.remove();
-        }, 1600);
+        removeSpan($e);
       });
       $leaderboard.append($e);
       $e.innerHeight();
@@ -74,40 +79,56 @@ $(function(){
   }
   
   function toggleOption(){
-    $nameList.removeClass("completed");
-    $addBtn.toggleClass("optionalized");
-    $nameList.toggleClass("optionalized");
-    $("#input-box").toggleClass("optionalized");
-    $nameList.val("");
-    isOptionScene = !isOptionScene;
-    setTimeout(function(){
-      if(isOptionScene){
-        var w = 10;
-      function a(){
-        random = member[Math.floor(Math.random() * member.length)];
-        console.log(random);
-        $nameList.val(random);
-        if(w < 1000){
-          setTimeout(function(){
+    if(member.length > 1){
+      
+      $nameList.removeClass("completed");
+      $addBtn.toggleClass("optionalized");
+      $nameList.toggleClass("optionalized");
+      $("#input-box").toggleClass("optionalized");
+      $nameList.val("");
+      isOptionScene = !isOptionScene;
+      if($("#input-box").hasClass("optionalized")){
+        $btnOption.addClass("disabled");
+        setTimeout(function(){
+          if(isOptionScene){
+            var w = 10;
+            function a(){
+              random = member[Math.floor(Math.random() * member.length)];
+              console.log(random);
+              $nameList.val(random);
+              if(w < 1000){
+                setTimeout(function(){
+                  a();
+                }, w | 0);
+                w *= 1.2;
+              }else{
+                $nameList.val(random);
+                $leaderboards.children().each(function(i, e){
+                  console.log(e.innerText);
+                  if(e.innerText == random + "X"){
+                    removeSpan($(e));
+                    console.log(member);
+                  }
+                });
+                $nameList.addClass("completed");
+                setTimeout(function(){
+                  $btnOption.removeClass("disabled");
+                },600);
+              }
+              
+            }
             a();
-          }, w | 0);
-          w *= 1.2;
-        }else{
-          $nameList.val(random);
-          member.splice(member.indexOf(random), 1);
-          $nameList.addClass("completed");
-        }
-      }
-a();
+          }
+        }, 800);
+        
+      }else{ //クラスoptionalizedがついてなかった場合の処理
+        
       }
       
+    }else{ //配列に値が2つ以上入っていなかった場合の処理
       
-      
-      
-      
-      
-      
-    }, 800);
+    }
+    
   }
   
   function toggleReset(){
@@ -154,7 +175,7 @@ a();
     dlAnchorElem.setAttribute("download", "Members.json");
     dlAnchorElem.click();
   });
- 
+  
   $btnImport.click(function(){
     $("#json-import").click();
   });

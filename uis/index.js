@@ -1,3 +1,9 @@
 $(function(){
-  $("h3").animate({fontSize: "50px"}, 1000);
+  var $title = $("#header");
+  var $span = $("span");
+  
+  $title.addClass("spawn");
+  $span.click(function(){
+    $(this).toggleClass("hop");
+  });
 });

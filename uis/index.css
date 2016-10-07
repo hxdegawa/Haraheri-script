@@ -1,3 +1,61 @@
-h3{
-  color: orange;
+body{
+  transition: 0.5s;
+  cursor: default;
+  margin: 0px;
+  background-color: rgba(231, 76, 60,1.0);
+  font-family: "font";
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-drag:none;
+  -khtml-user-drag:none;
+  overflow: hidden;
+  transform: rotateX(0deg);
+}
+span{
+  display: inline-block;
+  transform: rotateZ(0deg);
+  transition: 0.2s;
+  margin: 0px;
+  cursor: pointer;
+}
+#screen1{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+}
+#header{
+  margin: 0px;
+  margin-top: 27%;
+  opacity: 0;
+  margin-bottom: 0px;
+  font-size: 5rem;
+  color: rgba(236, 240, 241,1.0);
+}
+#header.spawn{
+  transition: 0.5s;
+  margin-top: 25%;
+  opacity: 1;
+}
+body.spawn{
+  transition: 0.5s;
+  background-color: rgba(52, 73, 94,1.0);
+  opacity: 1;
+}
+body:hover{
+}
+.hop{
+  transition: 0.2s;
+  transform: scale(1.2) rotateY(15deg) perspective(14px);
+  color: rgba(230, 126, 34,1.0);
+}
+@font-face{
+  font-family: "font";
+  src: url("./assets/fonts/myfont.otf");
 }
