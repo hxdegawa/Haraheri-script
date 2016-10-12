@@ -9,4 +9,20 @@
   transform: translateY(-50%);
   width: 100%;
   text-align: center;
+  color: #fff;
+}
+#parallax-screen-1{
+  background-color: #2ecc71;
+}
+#parallax-screen-2{
+  background-color: #9b59b6;
+}
+#parallax-screen-3{
+  background-color: #3498db;
+}
+#parallax-screen-4{
+  background-color: #f1c40f;
+}
+#parallax-screen-5{
+  background-color: #2c3e50;
 }
