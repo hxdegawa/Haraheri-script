@@ -15,19 +15,19 @@ img.src = "./hato.jpeg";
 
 function loop(){
   if(keys[37]){
-    player.x --;
+    player.x -= 10;
   }
   if(keys[39]){
-    player.x ++;
+    player.x += 10;
   }
   if(keys[38]){
-    player.y --;
+    player.y -= 10;
   }
   if(keys[40]){
-    player.y ++;
+    player.y += 10;
   }
   if(keys[32] === 1){
-    bullets.push(new Bullet(player.x, player.y, 0, -2));
+    bullets.push(new Bullet(player.x, player.y, 0, -10));
     keys[32] ++;
   }
   ctx.clearRect(0, 0, 600, 400);
