@@ -1,0 +1,8 @@
+body{
+  margin: 0px;
+}
+canvas{
+  background-image: url("./colacola2.jpg");
+  background-position: center;
+  background-size: cover;
+}

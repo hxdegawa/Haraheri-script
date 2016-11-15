@@ -1,6 +1,7 @@
 var canvas = document.getElementById("lol");
 var ctx = canvas.getContext("2d");
 var img = new Image();
+var cola = new Image();
 var keys={};
 document.onkeydown = function(e){
   keys[e.keyCode] = keys[e.keyCode] ? keys[e.keyCode] + 1 : 1;
