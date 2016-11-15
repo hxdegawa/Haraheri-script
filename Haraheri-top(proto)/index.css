@@ -1,0 +1,112 @@
+body{
+  user-select:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -khtml-user-select:none;
+  -webkit-user-drag:none;
+  -khtml-user-drag:none;
+  cursor: default;
+  margin: 0px;
+  font-family: "moon","light";
+}
+#header{
+  position: fixed;
+  padding: 0px;
+  width: 60%;
+  left: 0px;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+}
+#logo{
+  height: 30px;
+  width: 30px;
+}
+#sarch-box{
+  opacity: 0.4;
+  transition: 0.3s;
+  position: absolute;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
+  right: 5%;
+}
+#sarch-box:hover{
+  transition: 0.3s;
+  opacity: 1;  
+}
+#sarch-box.focused{
+  transition: 0.3s;
+  opacity: 1;
+}
+#sarch-input{
+  background-color: transparent;
+  border: 0px;
+  font-family: "moon","light";
+  color: white;
+  font-size: 1em;
+  outline-style: none;
+}
+#sarch-img{
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+#header li:first-child{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  line-height: 35px;
+  font-size: 1.3em;
+}
+#header li{
+  cursor: pointer;
+  transition: 0.2s;
+  line-height: 38px;
+}
+#header li:hover{
+  transition: 0.2s;
+  color: rgba(189, 195, 199,0.6);
+}
+#screen{
+  position: absolute;
+  display: block;
+  transition: 0.2s;
+  height: 100%;
+  width: 100%;
+  background-image: url(https://hd.unsplash.com/photo-1449198063792-7d754d6f3c80);
+  background-position: top;
+  background-size: cover;
+}
+#screen-cover{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  overflow-x: hidden;
+  color: white;
+}
+#title{
+  position: relative;
+  margin-top: 20%;
+  font-size: 5em;
+  font-family: 'Permanent Marker';
+}
+#desc-1{
+  position: fixed;
+  font-size: 2em;
+  height: 100px;
+  bottom: -200px;
+  color: black;
+
+}
+.devider{
+  background-color: white;
+  width: 100%;
+}
+@font-face{
+  font-family: "moon";
+  src: url("./assets/fonts/MoonLight.otf");
+}

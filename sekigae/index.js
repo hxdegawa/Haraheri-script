@@ -3,6 +3,8 @@ $(function(){
   var currentMember = "";
   var isResetScene = false;
   var isOptionScene = false;
+  var isToasting = false;
+  var $notification = $("#notification");
   var $leaderboards = $("#leaderboards");
   var $btnExport = $("#export-btn");
   var $btnImport = $("#import-btn");
@@ -25,6 +27,7 @@ $(function(){
       $btnStart.remove();
       $("body").removeClass("active");
       $(".top").removeClass("after");
+      $notification.removeClass("after");
     }, 1000);
   });
   
@@ -77,17 +80,22 @@ $(function(){
       count ++;
     }
   }
+  function cancelShuffleScreen(){
+    $addBtn.removeClass("optionalized");
+    $nameList.removeClass("optionalized");
+    $("#input-box").removeClass("optionalized");
+    isOptionScene = false;
+  }
   
   function toggleOption(){
     if(member.length > 1){
       
       $nameList.removeClass("completed");
-      $addBtn.toggleClass("optionalized");
-      $nameList.toggleClass("optionalized");
-      $("#input-box").toggleClass("optionalized");
+      $addBtn.addClass("optionalized");
+      $nameList.addClass("optionalized");
+      $("#input-box").addClass("optionalized");
       $nameList.val("");
-      isOptionScene = !isOptionScene;
-      if($("#input-box").hasClass("optionalized")){
+      isOptionScene = true;
         $btnOption.addClass("disabled");
         setTimeout(function(){
           if(isOptionScene){
@@ -96,42 +104,38 @@ $(function(){
               random = member[Math.floor(Math.random() * member.length)];
               console.log(random);
               $nameList.val(random);
-              if(w < 1000){
-                setTimeout(function(){
-                  a();
-                }, w | 0);
-                w *= 1.2;
-              }else{
-                $nameList.val(random);
-                $leaderboards.children().each(function(i, e){
-                  console.log(e.innerText);
-                  if(e.innerText == random + "X"){
-                    removeSpan($(e));
-                    console.log(member);
+              $leaderboards.children().each(function(i, e){
+                console.log(e.innerText);
+                if(e.innerText == random + "X"){
+                  removeSpan($(e));
+                  console.log(member);
                   }
                 });
-                $nameList.addClass("completed");
-                setTimeout(function(){
+                  $nameList.addClass("completed");
                   $btnOption.removeClass("disabled");
-                },600);
-              }
-              
-            }
+              } 
             a();
-          }
-        }, 800);
-        
-      }else{ //クラスoptionalizedがついてなかった場合の処理
-        
-      }
+            }
+        }, 800);  
       
     }else{ //配列に値が2つ以上入っていなかった場合の処理
-      
+      if(!isToasting){
+          isToasting = true;
+          $notification.text("Entry 2 people at least!");
+          $notification.addClass("popup");
+          setTimeout(function(){
+            $notification.removeClass("popup");
+            isToasting = false;
+        },2000);
+      }
     }
-    
   }
   
   function toggleReset(){
+    $nameList.removeClass("completed");
+    $addBtn.removeClass("optionalized");
+    $nameList.removeClass("optionalized");
+    $("#input-box").removeClass("optionalized");
     $("#btn-accept").toggleClass("active");
     $("#input-box").toggleClass("active");
     $("#name-add").toggleClass("active");

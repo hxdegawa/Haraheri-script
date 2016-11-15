@@ -1,0 +1,30 @@
+#gun-85mm{
+  width: 120px;
+  height: 50px;
+  transition: 0.2s;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  outline-style: none;
+  color: rgba(52, 73, 94,1.0);
+  background-color: rgba(236, 240, 241,1.0);
+  box-shadow: 1px 1px 10px rgba(52, 73, 94,1.0);
+}
+#gun-85mm:hover{
+  transition: 0.2s;
+  background-color: rgba(189, 195, 199,1.0);
+}
+#gun-85mm:active{
+  transition: 0.2s;
+  color: rgba(236, 240, 241,1.0); 
+  background-color: rgba(44, 62, 80,1.0);
+}
+#gun-85mm::before{
+  content: "";
+}
+
+/*
+@font-face{
+  font-family: "graphocons";
+  src: url("/.assets/fonts/Socialico_Plus.ttf");
+}*/
