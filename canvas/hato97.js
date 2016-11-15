@@ -3,7 +3,7 @@ var ctx = canvas.getContext("2d");
 var img = new Image();
 var keys={};
 document.onkeydown = function(e){
-  keys[e.keyCode] = keys[e.keyCode] ? keys[e.keyCOde * 1] : 1;
+  keys[e.keyCode] = keys[e.keyCode] ? keys[e.keyCode] + 1 : 1;
 };
 document.onkeyup = function(e){
   keys[e.keyCode] = 0;
