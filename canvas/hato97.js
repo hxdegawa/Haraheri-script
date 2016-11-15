@@ -3,10 +3,10 @@ var ctx = canvas.getContext("2d");
 var img = new Image();
 var keys={};
 document.onkeydown = function(e){
-  keys[e.keyCode] = true;
+  keys[e.keyCode] = keys[e.keyCode] ? keys[e.keyCOde * 1] : 1;
 };
 document.onkeyup = function(e){
-  keys[e.keyCode] = false;
+  keys[e.keyCode] = 0;
 };
 img.onload = function(){
   loop();
@@ -37,3 +37,4 @@ var player = {
   x: 0, 
   y: 0
 };
+var bullets = []
