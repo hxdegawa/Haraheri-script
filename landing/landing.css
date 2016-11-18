@@ -1,0 +1,68 @@
+html, body{
+  height: 100%;
+}
+html, body, h1, h2, h3, h4, h5, h6, p, ul, li{
+  margin: 0px;
+}
+h1, h2, h3{
+  font-weight: 200;
+}
+body{
+  overflow: scroll;
+  font-family: "Work Sans", sans-serif;
+}
+section.landing-section{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+section.landing-section>div.section-contents{
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+}
+div.section-contents{
+  text-align: center;
+}
+div.section-contents h1{
+  font-size: 80px;
+}
+div.section-contents p{
+  font-size: 22px;
+}
+div.section-contents pre{
+  width: 750px;
+  margin: 0px auto;
+}
+a.btn{
+  display: inline-block;
+  padding: 3px 10px;
+  font-size: 20px;
+  background-color: #1e824c;
+  color: #fff;
+  cursor: pointer;
+}
+.white{
+  color: #fff
+}
+.black{
+  color: #22313f;
+}
+.bg-black{
+  background-color: #22313f;
+}
+@media only screen and (max-width: 768px){
+  div.section-contents h1{
+    font-size: 50px;
+  }
+  div.section-contents pre{
+    width: 90%;
+  }
+  a.btn{
+    font-size: 30px;
+  }
+}
