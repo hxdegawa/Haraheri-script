@@ -10,9 +10,12 @@ var images = {
 var imgLoaded = 0;
 var imgLoading = 0;
 
-var bgm = new Audio("./hato97.wav");
+var bgm = document.getElementById("bgm");
 bgm.loop = true;
 bgm.play();
+var bgmContext = new AudioContext();
+var bgmNode = bgmContext.createMediaElementSource(bgm);
+bgmNode.connect(bgmContext.destination);
 
 document.onkeydown = function(e){
   keys[e.keyCode] = keys[e.keyCode] ? keys[e.keyCode] + 1 : 1;
