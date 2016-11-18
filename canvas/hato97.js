@@ -9,6 +9,11 @@ var images = {
 }
 var imgLoaded = 0;
 var imgLoading = 0;
+
+var bgm = new Audio("./hato97.wav");
+bgm.loop = true;
+bgm.play();
+
 document.onkeydown = function(e){
   keys[e.keyCode] = keys[e.keyCode] ? keys[e.keyCode] + 1 : 1;
 };
